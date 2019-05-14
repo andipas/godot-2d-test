@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resourses/TilesetGroud.tres" type="TileSet" id=2]
+[ext_resource path="res://Skeleton.tscn" type="PackedScene" id=3]
 
 [node name="StageOne" type="Node2D"]
 position = Vector2( 10, 30 )
@@ -30,3 +31,6 @@ margin_top = 20.0
 margin_right = 39.0
 margin_bottom = 34.0
 text = "FP:"
+
+[node name="Skeleton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 171, 26 )
