@@ -3,26 +3,26 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player/adventurer-idle-00.png" type="Texture" id=2]
 [ext_resource path="res://sprites/player/adventurer-idle-01.png" type="Texture" id=3]
-[ext_resource path="res://sprites/player/adventurer-idle-shoot-00.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player/adventurer-run-00.png" type="Texture" id=5]
-[ext_resource path="res://sprites/player/adventurer-run-01.png" type="Texture" id=6]
-[ext_resource path="res://sprites/player/adventurer-run-02.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player/adventurer-run-03.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player/adventurer-run-04.png" type="Texture" id=9]
-[ext_resource path="res://sprites/player/adventurer-run-05.png" type="Texture" id=10]
-[ext_resource path="res://sprites/player/adventurer-fall-00.png" type="Texture" id=11]
-[ext_resource path="res://sprites/player/adventurer-fall-01.png" type="Texture" id=12]
-[ext_resource path="res://sprites/player/adventurer-jump-00.png" type="Texture" id=13]
-[ext_resource path="res://sprites/player/adventurer-jump-01.png" type="Texture" id=14]
-[ext_resource path="res://sprites/player/adventurer-jump-02.png" type="Texture" id=15]
-[ext_resource path="res://sprites/player/adventurer-jump-03.png" type="Texture" id=16]
-[ext_resource path="res://sprites/player/adventurer-die-00.png" type="Texture" id=17]
-[ext_resource path="res://sprites/player/adventurer-die-01.png" type="Texture" id=18]
-[ext_resource path="res://sprites/player/adventurer-die-02.png" type="Texture" id=19]
-[ext_resource path="res://sprites/player/adventurer-die-03.png" type="Texture" id=20]
-[ext_resource path="res://sprites/player/adventurer-die-04.png" type="Texture" id=21]
-[ext_resource path="res://sprites/player/adventurer-die-05.png" type="Texture" id=22]
-[ext_resource path="res://sprites/player/adventurer-die-06.png" type="Texture" id=23]
+[ext_resource path="res://sprites/player/adventurer-run-00.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/adventurer-run-01.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/adventurer-run-02.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/adventurer-run-03.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/adventurer-run-04.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/adventurer-run-05.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/adventurer-die-00.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/adventurer-die-01.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/adventurer-die-02.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/adventurer-die-03.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/adventurer-die-04.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/adventurer-die-05.png" type="Texture" id=15]
+[ext_resource path="res://sprites/player/adventurer-die-06.png" type="Texture" id=16]
+[ext_resource path="res://sprites/player/adventurer-fall-00.png" type="Texture" id=17]
+[ext_resource path="res://sprites/player/adventurer-fall-01.png" type="Texture" id=18]
+[ext_resource path="res://sprites/player/adventurer-jump-00.png" type="Texture" id=19]
+[ext_resource path="res://sprites/player/adventurer-jump-01.png" type="Texture" id=20]
+[ext_resource path="res://sprites/player/adventurer-jump-02.png" type="Texture" id=21]
+[ext_resource path="res://sprites/player/adventurer-jump-03.png" type="Texture" id=22]
+[ext_resource path="res://sprites/player/adventurer-idle-shoot-00.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -31,29 +31,29 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "shoot",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "jump",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "die",
+"frames": [ ExtResource( 23 ) ],
+"loop": false,
+"name": "shoot",
 "speed": 5.0
 } ]
 
@@ -76,5 +76,5 @@ position = Vector2( -0.315559, 3.31337 )
 shape = SubResource( 2 )
 
 [node name="ShootPosition" type="Position2D" parent="."]
-position = Vector2( 10.8641, -30.3276 )
+position = Vector2( 17.4521, -18.7327 )
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

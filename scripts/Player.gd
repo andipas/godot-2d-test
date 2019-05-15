@@ -52,8 +52,10 @@ func _process(delta):
 		get_parent().add_child(fireball)
 		var x = $ShootPosition.global_position.x
 		var y = $ShootPosition.global_position.y
+		
+		x -= 20
 		if dir == -1 :
-			x -= 15
+			x -= 10
 		
 		fireball.position = Vector2(x,y)
 		
@@ -97,11 +99,10 @@ func Move(dir):
 		$AnimatedSprite.play("run")
 	
 	
-func _draw():
-	var x = $ShootPosition.global_position.x
-	var y = $ShootPosition.global_position.y
-	draw_line(Vector2(0, 0), Vector2((x + 10), y), Color(255, 0, 0), 1)
-    #draw_line(Vector2(0,0), Vector2(50, 50), Color(255, 0, 0), 1)
+#func _draw():
+#	var x = $ShootPosition.global_position.x
+#	var y = $ShootPosition.global_position.y
+#	draw_line(Vector2(0, 0), Vector2((x + 10), y), Color(255, 0, 0), 1)
 
 func _on_AnimatedSprite_animation_finished():
 	is_shooting = false
