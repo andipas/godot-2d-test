@@ -32,8 +32,8 @@ margin_right = 39.0
 margin_bottom = 34.0
 text = "FP:"
 
-[node name="Skeleton" parent="." instance=ExtResource( 3 )]
-position = Vector2( 183.428, 79.4956 )
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 278.661, 34.4349 )
 
-[node name="KinematicBody2D" parent="Skeleton" instance=ExtResource( 3 )]
-position = Vector2( 56.4465, -14.5851 )
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 191.392, 105.276 )
