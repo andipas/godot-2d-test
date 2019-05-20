@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Skeleton Idle.png-75da5cae9d9b8c303df34c590b81410f.stex"
+path="res://.import/tile003.png-1d20e9db16272e917518209891ca759e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemys/Skeleton/Skeleton Idle.png"
-dest_files=[ "res://.import/Skeleton Idle.png-75da5cae9d9b8c303df34c590b81410f.stex" ]
+source_file="res://sprites/enemys/Skeleton/walk/tile003.png"
+dest_files=[ "res://.import/tile003.png-1d20e9db16272e917518209891ca759e.stex" ]
 
 [params]
 

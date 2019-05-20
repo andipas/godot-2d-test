@@ -53,17 +53,17 @@ func _process(delta):
 		var x = $ShootPosition.global_position.x
 		var y = $ShootPosition.global_position.y
 		
-		x -= 20
-		if dir == -1 :
-			x -= 10
+#		x -= 20
+#		if dir == -1 :
+#			x -= 10
 		
 		fireball.position = Vector2(x,y)
 		
-		var str_fp = 'FP: ' + str(fireball.position.x) + ', ' + str(fireball.position.y)
-		var str_sp = 'SP: ' + str($ShootPosition.global_position.x) + ', ' + str($ShootPosition.global_position.y)
-		
-		get_parent().find_node("LabelSP").set_text(str_sp)
-		get_parent().find_node("LabelFP").set_text(str_fp)
+#		var str_fp = 'FP: ' + str(fireball.position.x) + ', ' + str(fireball.position.y)
+#		var str_sp = 'SP: ' + str($ShootPosition.global_position.x) + ', ' + str($ShootPosition.global_position.y)
+#
+#		get_parent().find_node("LabelSP").set_text(str_sp)
+#		get_parent().find_node("LabelFP").set_text(str_fp)
 		
 	velocity.y += GRAVITY
 	
