@@ -7,23 +7,21 @@ var is_entered = false
 var damage = 1;
 var is_damaged = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
+
 func set_fireball_direction(dir):
 	direction = dir
 	if direction == -1 :
 		$AnimatedSprite.flip_h = true
 	else :
 		$AnimatedSprite.flip_h = false
+		
 
 func _physics_process(delta):
 	if is_entered == false:
 		velocity.x = SPEED * delta * direction
 		translate(velocity)
 		$AnimatedSprite.play("shoot")
-	
+
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

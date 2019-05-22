@@ -13,6 +13,8 @@ var on_ground = false
 
 var is_shooting = false
 
+var firebals = []
+
 func _ready():
 	set_process(true)
 	
@@ -35,35 +37,9 @@ func _process(delta):
 			velocity.y = JUMP_POWER
 			on_ground = false
 			
+			
 	if Input.is_action_just_pressed("ui_focus_next") && is_shooting == false :
-		if is_on_floor():
-			velocity.x = 0
-			
-		is_shooting = true;
-		$AnimatedSprite.play("shoot")
-		var fireball = FIREBALL.instance()
-		
-		var dir = 1;
-		if sign($ShootPosition.position.x) == -1 :
-			dir = -1;
-		
-		fireball.set_fireball_direction(dir)
-			
-		get_parent().add_child(fireball)
-		var x = $ShootPosition.global_position.x
-		var y = $ShootPosition.global_position.y
-		
-#		x -= 20
-#		if dir == -1 :
-#			x -= 10
-		
-		fireball.position = Vector2(x,y)
-		
-#		var str_fp = 'FP: ' + str(fireball.position.x) + ', ' + str(fireball.position.y)
-#		var str_sp = 'SP: ' + str($ShootPosition.global_position.x) + ', ' + str($ShootPosition.global_position.y)
-#
-#		get_parent().find_node("LabelSP").set_text(str_sp)
-#		get_parent().find_node("LabelFP").set_text(str_fp)
+		shoot()
 		
 	velocity.y += GRAVITY
 	
@@ -80,7 +56,12 @@ func _process(delta):
 				$AnimatedSprite.play("fall")
 			
 		
-	velocity = move_and_slide(velocity, FLOOR);
+	velocity = move_and_slide(velocity, FLOOR)
+	
+	for fir in firebals:
+		var str_sp = 'FP: ' + str(fir.x) + ', ' + str(fir.y)
+		get_parent().find_node("Label").set_text(str_sp)
+	
 
 func Move(dir):
 	var flip = false
@@ -97,12 +78,37 @@ func Move(dir):
 	
 	if is_shooting == false :
 		$AnimatedSprite.play("run")
+		
+func shoot():
+	# если на земле то останавливаемся для каста			
+	if is_on_floor():
+		velocity.x = 0
+		
+	is_shooting = true;
+	$AnimatedSprite.play("shoot")
+	var fireball = FIREBALL.instance()
 	
+	var dir = 1;
+	if sign($ShootPosition.position.x) == -1 :
+		dir = -1;
 	
-#func _draw():
-#	var x = $ShootPosition.global_position.x
-#	var y = $ShootPosition.global_position.y
-#	draw_line(Vector2(0, 0), Vector2((x + 10), y), Color(255, 0, 0), 1)
+	fireball.set_fireball_direction(dir)
+		
+	get_parent().add_child(fireball)
+	var x = $ShootPosition.global_position.x
+	var y = $ShootPosition.global_position.y
+
+	fireball.position = Vector2(x,y)
+	
+	firebals.append(fireball.position)
+
+	
+func _draw():
+	draw_circle($ShootPosition.position, 2, Color(255, 0, 0))
+
+	for fir in firebals:
+		draw_circle(fir, 2, Color(255, 0, 0))
+
 
 func _on_AnimatedSprite_animation_finished():
 	is_shooting = false
