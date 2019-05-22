@@ -58,9 +58,9 @@ func _process(delta):
 		
 	velocity = move_and_slide(velocity, FLOOR)
 	
-	for fir in firebals:
-		var str_sp = 'FP: ' + str(fir.x) + ', ' + str(fir.y)
-		get_parent().find_node("Label").set_text(str_sp)
+#	for frPos in firebals:
+#		var str_sp = 'FP: ' + str(frPos.x) + ', ' + str(frPos.y)
+#		get_parent().find_node("Label").set_text(str_sp)
 	
 
 func Move(dir):
@@ -97,17 +97,15 @@ func shoot():
 	get_parent().add_child(fireball)
 	var x = $ShootPosition.global_position.x
 	var y = $ShootPosition.global_position.y
-
 	fireball.position = Vector2(x,y)
-	
 	firebals.append(fireball.position)
 
 	
 func _draw():
 	draw_circle($ShootPosition.position, 2, Color(255, 0, 0))
 
-	for fir in firebals:
-		draw_circle(fir, 2, Color(255, 0, 0))
+	for frPos in firebals:
+		draw_circle(frPos, 2, Color(255, 0, 0))
 
 
 func _on_AnimatedSprite_animation_finished():
