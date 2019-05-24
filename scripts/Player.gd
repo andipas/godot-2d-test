@@ -3,17 +3,16 @@ extends KinematicBody2D
 var velocity = Vector2()
 
 const SPEED = 60
-const GRAVITY = 20
+const GRAVITY = 10
 const JUMP_POWER  = -200
 const FLOOR = Vector2(0, -1)
 
 const FIREBALL = preload("res://scenes/Fireball.tscn")
 
 var on_ground = false
-
 var is_shooting = false
 
-var firebals = []
+var direction = 1
 
 func _ready():
 	set_process(true)
@@ -22,10 +21,12 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_pressed("ui_right") :
-		Move(1)
+		direction = 1
+		Move()
 		
 	elif Input.is_action_pressed("ui_left") :
-		Move(-1)
+		direction = -1
+		Move()
 	else :
 		velocity.x = 0;
 		if on_ground == true && is_shooting == false :
@@ -63,17 +64,17 @@ func _process(delta):
 #		get_parent().find_node("Label").set_text(str_sp)
 	
 
-func Move(dir):
+func Move():
 	var flip = false
-	if dir == -1:
+	if direction == -1:
 		flip = true
-	velocity.x = SPEED * dir
+	velocity.x = SPEED * direction
 	$AnimatedSprite.flip_h = flip
 	
 	var sign_x = sign($ShootPosition.position.x) 
-	if sign_x == -1 && dir == 1 :
+	if sign_x == -1 && direction == 1 :
 		$ShootPosition.position.x *= -1
-	elif sign_x == 1 && dir == -1 :
+	elif sign_x == 1 && direction == -1 :
 		$ShootPosition.position.x *= -1
 	
 	if is_shooting == false :
@@ -88,25 +89,18 @@ func shoot():
 	$AnimatedSprite.play("shoot")
 	var fireball = FIREBALL.instance()
 	
-	var dir = 1;
+	var direction = 1;
 	if sign($ShootPosition.position.x) == -1 :
-		dir = -1;
+		direction = -1;
 	
-	fireball.set_fireball_direction(dir)
+	fireball.set_fireball_direction(direction)
 		
 	get_parent().add_child(fireball)
-	var x = $ShootPosition.global_position.x
-	var y = $ShootPosition.global_position.y
-	fireball.position = Vector2(x,y)
-	firebals.append(fireball.position)
+	fireball.position = $ShootPosition.global_position
 
 	
 func _draw():
 	draw_circle($ShootPosition.position, 2, Color(255, 0, 0))
-
-	for frPos in firebals:
-		draw_circle(frPos, 2, Color(255, 0, 0))
-
 
 func _on_AnimatedSprite_animation_finished():
 	is_shooting = false
